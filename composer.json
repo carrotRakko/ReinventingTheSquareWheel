@@ -6,5 +6,19 @@
             "email": "24588751+carrotRakko@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "autoload": {
+        "psr-4": {
+            "CarrotRakko\\ReinventingTheSquareWheel\\": "./"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "./tests/"
+        }
+    },
+    "require": {},
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.5",
+        "phpunit/phpunit": "^8.5"
+    }
 }
