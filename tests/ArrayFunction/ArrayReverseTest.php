@@ -32,7 +32,9 @@ class ArrayReverseTest extends TestCase
     public function arrayReverseDataProviderWithoutPreserveKeys(): array
     {
         return [
-            'EmptyArray' => [[], []],
+            'EmptyArray'    => [[],                                   []                                  ],
+            'IntIndexed'    => [[3, 2, 1],                            [1, 2, 3]                           ],
+            'StringIndexed' => [['baz' => 3, 'bar' => 2, 'foo' => 1], ['foo' => 1, 'bar' => 2, 'baz' => 3]],
         ];
     }
 
@@ -60,8 +62,12 @@ class ArrayReverseTest extends TestCase
     public function arrayReverseDataProviderWithPreserveKeys(): array
     {
         return [
-            'EmptyArray_PreserveKey'    => [[], [], false],
-            'EmptyArray_NotPreserveKey' => [[], [], true ],
+            'EmptyArray_PreserveKey'       => [[],                                   [],                                   true ],
+            'EmptyArray_NotPreserveKey'    => [[],                                   [],                                   false],
+            'IntIndexed_PreserveKey'       => [[3, 2, 1],                            [2 => 1, 1 => 2, 0 => 3],             true ],
+            'IntIndexed_NotPreserveKey'    => [[3, 2, 1],                            [1, 2, 3],                            false],
+            'StringIndexed_PreserveKey'    => [['baz' => 3, 'bar' => 2, 'foo' => 1], ['foo' => 1, 'bar' => 2, 'baz' => 3], true ],
+            'StringIndexed_NotPreserveKey' => [['baz' => 3, 'bar' => 2, 'foo' => 1], ['foo' => 1, 'bar' => 2, 'baz' => 3], false],
         ];
     }
 }
